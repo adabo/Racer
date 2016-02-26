@@ -117,11 +117,8 @@ void D3DGraphics::DrawFilledRect(int Left, int Top, int Right, int Bottom, D3DCO
 
 void D3DGraphics::DrawRectOutline(int Left, int Top, int Right, int Bottom, D3DCOLOR Color)
 {
-	DrawLine(Left, Top, Right, Top, Color);
-	DrawLine(Left, Bottom, Right, Bottom, Color);
-	DrawLine(Left, Top, Left, Bottom, Color);
-	DrawLine(Right, Top, Right, Bottom, Color);
+	DrawLine(Left, Top, Right, Top, Color);       // Top line
+	DrawLine(Left, Bottom, Right, Bottom, Color); // Bottom line
+	DrawLine(Left, Top, Left, Bottom, Color);     // Left line
+	DrawLine(Right, Top, Right, Bottom, Color);   // Right line
 }
-
-
-
