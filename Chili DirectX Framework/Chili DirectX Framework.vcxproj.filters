@@ -30,13 +30,10 @@
     <ClCompile Include="..\Assets\Windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Assets\Car.cpp">
+    <ClCompile Include="..\Assets\DrawCar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Assets\Observer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\Track.cpp">
+    <ClCompile Include="..\Assets\Car_Abel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,13 +53,7 @@
     <ClInclude Include="..\Assets\Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Assets\Car.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Assets\Observer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Assets\Track.h">
+    <ClInclude Include="..\Assets\Car_Abel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -23,6 +23,7 @@
 #include "D3DGraphics.h"
 #include "Observer.h"
 #include "Keyboard.h"
+#include "Car_Abel.h"
 
 class Game
 {
@@ -42,7 +43,6 @@ private:
 	/********************************/
 	/*  User Variables              */
 	// TODO: User variables go here
-	Observer observer;
-	float x,y;
+	Car car;
 	/********************************/
 };

@@ -1,91 +1,92 @@
-#includ "Car.h"
-void UpdatePosition()
+#include "Car_Abel.h"
+
+void Car::UpdatePosition()
 {
-    if( this.direction == UP )
+    if( car.direction == UP )
     {
-        if( this.trackside == EAST ||
-            this.trackside == WEST)
+        if( car.trackside == EAST ||
+            car.trackside == WEST)
         {
-            this.y -= this.speed;
+            car.y -= car.speed;
         }
     }
-    if( this.direction == DOWN )
+    if( car.direction == DOWN )
     {
-        if( this.trackside == EAST ||
-            this.trackside == SOUTH)
+        if( car.trackside == EAST ||
+            car.trackside == SOUTH)
         {
-            this.y += this.speed;
+            car.y += car.speed;
         }
     }
-    if( this.direction == LEFT )
+    if( car.direction == LEFT )
     {
-        if( this.trackside == NORTH ||
-            this.trackside == SOUTH)
+        if( car.trackside == NORTH ||
+            car.trackside == SOUTH)
         {
-            this.x -= this.speed;
+            car.x -= car.speed;
         }
     }
-    if( this.direction == RIGHT )
+    if( car.direction == RIGHT )
     {
-        if( this.trackside == NORTH ||
-            this.trackside == SOUTH)
+        if( car.trackside == NORTH ||
+            car.trackside == SOUTH)
         {
-            this.x += this.speed;
+            car.x += car.speed;
         }
     }
 }
 
-void SetTrackSide()
+void Car::SetTrackSide()
 {
-    if( this.direction == DOWN ||
-        this.direction == UP)
+    if( car.direction == DOWN ||
+        car.direction == UP)
     {
         // Check if car is on west side
-        if ( this.x == 20 &&
-           ( this.y >= 20 && this.y <= 540 ) &&
+        if ( car.x == 20 &&
+           ( car.y >= 20 && car.y <= 540 ) )
         {
-            this.trackside = WEST;
+            car.trackside = WEST;
         }
         // Check if car is on east side
-        if ( this.x == 540 &&
-           ( this.y >= 20 && this.y <= 540 ) &&
+        if ( car.x == 540 &&
+           ( car.y >= 20 && car.y <= 540 ) )
         {
-            this.trackside = EAST;
+            car.trackside = EAST;
         }
     }
-    if( this.direction == LEFT ||
-        this.direction == RIGHT)
+    if( car.direction == LEFT ||
+        car.direction == RIGHT)
     {
         // Check if car is on south side
-        if ( ( this.x == 20 && this.x <= 540 ) &&
-               this.y == 540 &&
+        if ( ( car.x == 20 && car.x <= 540 ) &&
+               car.y == 540 )
         {
-            this.trackside = SOUTH;
+            car.trackside = SOUTH;
         }
         // Check if car is on north side
-        if ( ( this.x == 20 && this.x <= 540 ) &&
-               this.y == 20 &&
+        if ( ( car.x == 20 && car.x <= 540 ) &&
+               car.y == 20 )
         {
-            this.trackside = NORTH;
+            car.trackside = NORTH;
         }
     }
 }
 
-void SetCarDirection( Direction d)
+void Car::SetCarDirection( Direction d)
 {
     switch( d )
     {
         case UP:
-            this.direction = UP;
+            car.direction = UP;
         break;
         case DOWN:
-            this.direction = DOWN;
+            car.direction = DOWN;
         break;
         case LEFT:
-            this.direction = LEFT;
+            car.direction = LEFT;
         break;
         case RIGHT:
-            this.direction = RIGHT;
+            car.direction = RIGHT;
         break;
         default:
         break;

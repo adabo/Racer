@@ -1,10 +1,11 @@
+#pragma once
 #define SCREENWIDTH 600
 #define SCREENWIDTH 800
 
 enum TrackSide
 {
     NORTH,SOUTH,EAST,WEST
-}
+};
 
 enum Direction
 {
@@ -15,10 +16,9 @@ class Car
 {
 public:
     void UpdatePosition();
-
     void SetTrackSide();
-
     void SetCarDirection( Direction d);
+    void DrawCar( float x,float y );
 
 public:
     TrackSide trackside;
