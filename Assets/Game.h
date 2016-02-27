@@ -43,5 +43,6 @@ private:
 	/*  User Variables              */
 	// TODO: User variables go here
 	Observer observer;
+	float x,y;
 	/********************************/
 };

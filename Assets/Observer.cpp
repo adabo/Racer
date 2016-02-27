@@ -2,10 +2,10 @@
 
 void Observer::Update(KeyboardClient & Kbd)
 {
-	car.Update();
+	// car.Update();
 }
 
 void Observer::Draw(D3DGraphics & gfx)
 {
-	car.Draw(gfx);
+	// car.Draw(gfx);
 }

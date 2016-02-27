@@ -25,7 +25,9 @@
 
 Game::Game( HWND hWnd,const KeyboardServer& kServer )
 :	gfx ( hWnd ),
-	kbd( kServer )
+	kbd( kServer ),
+    x( 0 ),
+    y( 0 )
 {
 	srand( (unsigned int)time( NULL ) );
 }
@@ -39,7 +41,19 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
+void DrawCar( int position_x,int position_y )
+{
+    int width = 40;
+    for (int height = 0; height < width; ++height)
+       {
+            gfx.DrawLine( position_x + height, position_x + height + width,
+                    position_y + height,position_y + height + width
+                    D3DCOLOR( 255.255,100 ) );
+       }   
+}
+
 void Game::ComposeFrame()
 {	
-	observer.Draw(gfx);
+	// observer.Draw(gfx);
+    DrawCar( 0,0 );
 }
