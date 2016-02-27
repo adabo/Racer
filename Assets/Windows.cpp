@@ -94,7 +94,7 @@ int WINAPI wWinMain( HINSTANCE hInst,HINSTANCE,LPWSTR,INT )
 	
 	RECT wr;
 	wr.left = 100;
-	wr.right = 800 + wr.left;
+	wr.right = 600 + wr.left;
 	wr.top = 100;
 	wr.bottom = 600 + wr.top;
 	AdjustWindowRect( &wr,WS_OVERLAPPEDWINDOW,FALSE );

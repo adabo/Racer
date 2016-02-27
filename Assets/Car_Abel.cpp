@@ -7,36 +7,52 @@ Car::Car( Car* car )
 
 void Car::UpdatePosition( Car* car )
 {
-    if( car->direction == UP )
+    if     ( car->direction == UP )
     {
         if( car->trackside == EAST ||
             car->trackside == WEST)
         {
             car->y -= car->speed;
+            if ( car->y <= 20 )
+            {
+                car->y = 20;
+            }
         }
     }
-    if( car->direction == DOWN )
+    else if( car->direction == DOWN )
     {
         if( car->trackside == EAST ||
             car->trackside == WEST)
         {
             car->y += car->speed;
+            if ( car->y >= 540 )
+            {
+                car->y = 540;
+            }
         }
     }
-    if( car->direction == LEFT )
+    else if( car->direction == LEFT )
     {
         if( car->trackside == NORTH ||
             car->trackside == SOUTH)
         {
             car->x -= car->speed;
+            if ( car->x <= 20 )
+            {
+                car->x = 20;
+            }
         }
     }
-    if( car->direction == RIGHT )
+    else if( car->direction == RIGHT )
     {
         if( car->trackside == NORTH ||
             car->trackside == SOUTH)
         {
             car->x += car->speed;
+            if ( car->x >= 540 )
+            {
+                car->x = 540;
+            }
         }
     }
 }
@@ -63,23 +79,23 @@ void Car::SetTrackSide( Car* car )
         car->direction == RIGHT)
     {
         // Check if car is on south side
-        if ( ( car->x == 20 && car->x <= 540 ) &&
-               car->y == 540 )
+        if ( car->y == 540 &&
+           ( car->x >= 20 && car->x <= 540 ) )
         {
             car->trackside = SOUTH;
         }
         // Check if car is on north side
-        if ( ( car->x == 20 && car->x <= 540 ) &&
-               car->y == 20 )
+        if ( car->y == 20 &&
+           ( car->x >= 20 && car->x <= 540 ) )
         {
             car->trackside = NORTH;
         }
     }
 }
 
-void Car::SetCarDirection( Car* car,Direction direction )
+void Car::SetCarDirection( Car* car,Direction d )
 {
-    switch( direction )
+    switch( d )
     {
         case UP:
             car->direction = UP;

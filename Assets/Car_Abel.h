@@ -17,8 +17,8 @@ public:
     Car( Car* car );
     void UpdatePosition( Car* car );
     void SetTrackSide( Car* car );
-    void SetCarDirection( Car* car,Direction direction );
-    void DrawCar( int x,int y,D3DGraphics* gfx);
+    void SetCarDirection( Car* car,Direction d );
+    void DrawCar(int x, int y, Direction d, D3DGraphics* gfx );
 
 public:
     TrackSide trackside;

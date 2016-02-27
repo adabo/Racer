@@ -28,6 +28,8 @@ Game::Game( HWND hWnd,const KeyboardServer& kServer )
 	kbd( kServer ),
     car( &car )
 {
+    car.direction = DOWN;
+    car.trackside = WEST;
     car.speed = 2;
 	srand( (unsigned int)time( NULL ) );
 }
@@ -42,22 +44,23 @@ void Game::Go()
 
 void Game::ComposeFrame()
 {
-    if( kbd.UpIsPressed() )
+    if     ( kbd.UpIsPressed() )
     {
         car.SetCarDirection( &car,UP );
     }
-    if( kbd.DownIsPressed() )
+    else if( kbd.DownIsPressed() )
     {
         car.SetCarDirection( &car,DOWN );
     }
-    if( kbd.LeftIsPressed() )
+    else if( kbd.LeftIsPressed() )
     {
         car.SetCarDirection( &car,LEFT );
     }
-    if( kbd.RightIsPressed() )
+    else if( kbd.RightIsPressed() )
     {
         car.SetCarDirection( &car,RIGHT );
     }
+
     car.SetTrackSide( &car );
 
     car.UpdatePosition( &car );
