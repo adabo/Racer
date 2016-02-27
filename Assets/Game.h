@@ -21,7 +21,6 @@
 #pragma once
 
 #include "D3DGraphics.h"
-#include "Observer.h"
 #include "Keyboard.h"
 #include "Car_Abel.h"
 

@@ -1,6 +1,5 @@
 #pragma once
-#define SCREENWIDTH 600
-#define SCREENWIDTH 800
+#include "D3DGraphics.h"
 
 enum TrackSide
 {
@@ -15,10 +14,11 @@ enum Direction
 class Car
 {
 public:
-    void UpdatePosition();
-    void SetTrackSide();
-    void SetCarDirection( Direction d);
-    void DrawCar( float x,float y );
+    Car( Car* car );
+    void UpdatePosition( Car* car );
+    void SetTrackSide( Car* car );
+    void SetCarDirection( Car* car,Direction direction );
+    void DrawCar( int x,int y,D3DGraphics* gfx);
 
 public:
     TrackSide trackside;
