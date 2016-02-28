@@ -82,26 +82,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Assets\Car_Abel.cpp" />
-    <ClCompile Include="..\Assets\D3DGraphics.cpp" />
-    <ClCompile Include="..\Assets\DrawCar.cpp" />
-    <ClCompile Include="..\Assets\Game.cpp" />
-    <ClCompile Include="..\Assets\Keyboard.cpp" />
-    <ClCompile Include="..\Assets\Timer.cpp" />
-    <ClCompile Include="..\Assets\Track.cpp" />
-    <ClCompile Include="..\Assets\Windows.cpp" />
+    <Resource Include="..\Assets\ChiliDirectXFramework.res" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Assets\Car_Abel.h" />
+    <ClInclude Include="..\Assets\Car.h" />
+    <ClInclude Include="..\Assets\Common.h" />
     <ClInclude Include="..\Assets\D3DGraphics.h" />
     <ClInclude Include="..\Assets\Game.h" />
     <ClInclude Include="..\Assets\Keyboard.h" />
+    <ClInclude Include="..\Assets\Observer.h" />
     <ClInclude Include="..\Assets\Resource.h" />
     <ClInclude Include="..\Assets\Timer.h" />
     <ClInclude Include="..\Assets\Track.h" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="..\Assets\ChiliDirectXFramework.res" />
+    <ClCompile Include="..\Assets\Car.cpp" />
+    <ClCompile Include="..\Assets\D3DGraphics.cpp" />
+    <ClCompile Include="..\Assets\DrawCar.cpp" />
+    <ClCompile Include="..\Assets\Game.cpp" />
+    <ClCompile Include="..\Assets\Keyboard.cpp" />
+    <ClCompile Include="..\Assets\Observer.cpp" />
+    <ClCompile Include="..\Assets\Timer.cpp" />
+    <ClCompile Include="..\Assets\Track.cpp" />
+    <ClCompile Include="..\Assets\Windows.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

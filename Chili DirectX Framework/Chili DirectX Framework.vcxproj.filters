@@ -15,32 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Assets\D3DGraphics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\Keyboard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\Timer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\Windows.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\DrawCar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\Car_Abel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\Track.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Resource Include="..\Assets\ChiliDirectXFramework.res">
+      <Filter>Resource Files</Filter>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Assets\Car.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Assets\Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\Assets\D3DGraphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -50,13 +35,13 @@
     <ClInclude Include="..\Assets\Keyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Assets\Timer.h">
+    <ClInclude Include="..\Assets\Observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Assets\Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Assets\Car_Abel.h">
+    <ClInclude Include="..\Assets\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Assets\Track.h">
@@ -64,8 +49,32 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="..\Assets\ChiliDirectXFramework.res">
-      <Filter>Resource Files</Filter>
-    </Resource>
+    <ClCompile Include="..\Assets\Car.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\D3DGraphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\DrawCar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\Keyboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\Observer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\Track.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

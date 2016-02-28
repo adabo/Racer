@@ -101,7 +101,7 @@ void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY, D3DCOLOR 
 	float invLen = 1.0f / len;
 	float nx = dx * invLen;
 	float ny = dy * invLen;
-	for (int i = 0; i < len; ++i)
+	for (int i = 0; i <= len; ++i)
 	{
 		PutPixel(StartX + (nx * i), StartY + (ny * i), Color);
 	}

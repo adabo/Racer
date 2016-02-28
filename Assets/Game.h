@@ -22,9 +22,8 @@
 
 #include "D3DGraphics.h"
 #include "Keyboard.h"
-#include "Car_Abel.h"
-#include "Track.h"
 #include "Timer.h"
+#include "Observer.h"
 
 class Game
 {
@@ -32,20 +31,11 @@ public:
 	Game( HWND hWnd,const KeyboardServer& kServer );
 	void Go();
 private:
-	void ComposeFrame( float dt );
-	/********************************/
-	/*  User Functions              */
-	// TODO: User functions go here
-
-	/********************************/
+	void ComposeFrame();
 private:
 	D3DGraphics gfx;
 	KeyboardClient kbd;
+
 	Timer timer;
-	/********************************/
-	/*  User Variables              */
-	// TODO: User variables go here
-	Car car;
-	Track track;
-	/********************************/
+	Observer observer;
 };

@@ -25,50 +25,25 @@
 
 Game::Game( HWND hWnd,const KeyboardServer& kServer )
 :	gfx ( hWnd ),
-	kbd( kServer ),
-    car( &car )
+	kbd( kServer )
 {
-    car.direction = DOWN;
-    car.trackside = WEST;
-    car.speed = 200.0f;
-    track.x = 0;
-    track.y = 0;
 	srand( (unsigned int)time( NULL ) );
 }
 
 void Game::Go()
-{
-    static float dt;
+{    
     timer.StopWatch();
-    dt = timer.GetTimeMilli() * 0.001f;
+	float dt = timer.GetTimeMilli() * 0.001f;
     timer.StartWatch();
 
+	observer.Update(kbd, dt);
+
 	gfx.BeginFrame();
-	ComposeFrame( dt );
+	ComposeFrame();
 	gfx.EndFrame();
 }
 
-void Game::ComposeFrame( float dt )
+void Game::ComposeFrame()
 {
-    if     ( kbd.UpIsPressed() )
-    {
-        car.SetCarDirection( &car,UP );
-    }
-    else if( kbd.DownIsPressed() )
-    {
-        car.SetCarDirection( &car,DOWN );
-    }
-    else if( kbd.LeftIsPressed() )
-    {
-        car.SetCarDirection( &car,LEFT );
-    }
-    else if( kbd.RightIsPressed() )
-    {
-        car.SetCarDirection( &car,RIGHT );
-    }
-
-    car.SetTrackSide( &car );
-    car.UpdatePosition( &car,dt );
-    track.DrawTrack( track.x,track.y,&gfx );
-    car.DrawCar( car.x,car.y,car.direction,&gfx );
+	observer.Draw(gfx);
 }
