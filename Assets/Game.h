@@ -24,6 +24,7 @@
 #include "Keyboard.h"
 #include "Car_Abel.h"
 #include "Track.h"
+#include "Timer.h"
 
 class Game
 {
@@ -31,7 +32,7 @@ public:
 	Game( HWND hWnd,const KeyboardServer& kServer );
 	void Go();
 private:
-	void ComposeFrame();
+	void ComposeFrame( float dt );
 	/********************************/
 	/*  User Functions              */
 	// TODO: User functions go here
@@ -40,6 +41,7 @@ private:
 private:
 	D3DGraphics gfx;
 	KeyboardClient kbd;
+	Timer timer;
 	/********************************/
 	/*  User Variables              */
 	// TODO: User variables go here

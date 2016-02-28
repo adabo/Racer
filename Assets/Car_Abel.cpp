@@ -5,14 +5,14 @@ Car::Car( Car* car )
     car->x = 20,car->y = 20;
 }
 
-void Car::UpdatePosition( Car* car )
+void Car::UpdatePosition( Car* car,float dt )
 {
     if     ( car->direction == UP )
     {
         if( car->trackside == EAST ||
             car->trackside == WEST)
         {
-            car->y -= car->speed;
+            car->y -= car->speed * dt;
             if ( car->y <= 20 )
             {
                 car->y = 20;
@@ -24,7 +24,7 @@ void Car::UpdatePosition( Car* car )
         if( car->trackside == EAST ||
             car->trackside == WEST)
         {
-            car->y += car->speed;
+            car->y += car->speed * dt;
             if ( car->y >= 540 )
             {
                 car->y = 540;
@@ -36,7 +36,7 @@ void Car::UpdatePosition( Car* car )
         if( car->trackside == NORTH ||
             car->trackside == SOUTH)
         {
-            car->x -= car->speed;
+            car->x -= car->speed * dt;
             if ( car->x <= 20 )
             {
                 car->x = 20;
@@ -48,7 +48,7 @@ void Car::UpdatePosition( Car* car )
         if( car->trackside == NORTH ||
             car->trackside == SOUTH)
         {
-            car->x += car->speed;
+            car->x += car->speed * dt;
             if ( car->x >= 540 )
             {
                 car->x = 540;
