@@ -23,6 +23,7 @@
 #include "D3DGraphics.h"
 #include "Keyboard.h"
 #include "Car_Abel.h"
+#include "Track.h"
 
 class Game
 {
@@ -43,5 +44,6 @@ private:
 	/*  User Variables              */
 	// TODO: User variables go here
 	Car car;
+	Track track;
 	/********************************/
 };

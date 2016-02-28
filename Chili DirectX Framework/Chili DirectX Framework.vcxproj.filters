@@ -36,6 +36,9 @@
     <ClCompile Include="..\Assets\Car_Abel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Assets\Track.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Assets\D3DGraphics.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Assets\Car_Abel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Assets\Track.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

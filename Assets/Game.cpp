@@ -31,6 +31,8 @@ Game::Game( HWND hWnd,const KeyboardServer& kServer )
     car.direction = DOWN;
     car.trackside = WEST;
     car.speed = 2;
+    track.x = 0;
+    track.y = 0;
 	srand( (unsigned int)time( NULL ) );
 }
 
@@ -66,4 +68,5 @@ void Game::ComposeFrame()
     car.UpdatePosition( &car );
 
     car.DrawCar( car.x,car.y,car.direction,&gfx );
+    track.DrawTrack( track.x,track.y,&gfx );
 }

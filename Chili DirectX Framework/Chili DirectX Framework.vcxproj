@@ -88,6 +88,7 @@
     <ClCompile Include="..\Assets\Game.cpp" />
     <ClCompile Include="..\Assets\Keyboard.cpp" />
     <ClCompile Include="..\Assets\Timer.cpp" />
+    <ClCompile Include="..\Assets\Track.cpp" />
     <ClCompile Include="..\Assets\Windows.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +98,7 @@
     <ClInclude Include="..\Assets\Keyboard.h" />
     <ClInclude Include="..\Assets\Resource.h" />
     <ClInclude Include="..\Assets\Timer.h" />
+    <ClInclude Include="..\Assets\Track.h" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="..\Assets\ChiliDirectXFramework.res" />
