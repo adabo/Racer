@@ -47,15 +47,18 @@
     <ClInclude Include="..\Assets\Track.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Assets\Surface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Assets\GPlus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Assets\Car.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Assets\D3DGraphics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Assets\DrawCar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Assets\Game.cpp">
@@ -74,6 +77,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Assets\Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\Surface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Assets\GPlus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

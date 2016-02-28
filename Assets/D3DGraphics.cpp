@@ -87,7 +87,8 @@ void D3DGraphics::EndFrame()
 	pDevice->Present( NULL,NULL,NULL,NULL );
 }
 
-void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY, D3DCOLOR Color)
+void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY,
+	D3DCOLOR Color)
 {
 	StartX = max(0, min(scrWidth, StartX));
 	EndX = max(0, min(scrWidth, EndX));
@@ -97,13 +98,47 @@ void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY, D3DCOLOR 
 	int dx = EndX - StartX;
 	int dy = EndY - StartY;
 
-	float len = sqrt(pow(dx, 2) + pow(dy, 2));
-	float invLen = 1.0f / len;
-	float nx = dx * invLen;
-	float ny = dy * invLen;
-	for (int i = 0; i <= len; ++i)
+	if (dy == 0 && dx == 0)
 	{
-		PutPixel(StartX + (nx * i), StartY + (ny * i), Color);
+		PutPixel(StartX, StartY, Color);
+	}
+	else if (abs(dy) > abs(dx))
+	{
+		if (dy < 0)
+		{
+			int temp = StartX;
+			StartX = EndX;
+			EndX = temp;
+			temp = StartY;
+			StartY = EndY;
+			EndY = temp;
+		}
+		float m = (float)dx / (float)dy;
+		float b = StartX - m*StartY;
+		for (int y = StartY; y <= EndY; y = y + 1)
+		{
+			int x = (int)(m*y + b + 0.5f);
+			PutPixel(x, y, Color);
+		}
+	}
+	else
+	{
+		if (dx < 0)
+		{
+			int temp = StartX;
+			StartX = EndX;
+			EndX = temp;
+			temp = StartY;
+			StartY = EndY;
+			EndY = temp;
+		}
+		float m = (float)dy / (float)dx;
+		float b = StartY - m*StartX;
+		for (int x = StartX; x <= EndX; x = x + 1)
+		{
+			int y = (int)(m*x + b + 0.5f);
+			PutPixel(x, y, Color);
+		}
 	}
 }
 

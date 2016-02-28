@@ -1,6 +1,7 @@
 #pragma once
 #include "Common.h"
 #include "Keyboard.h"
+#include "Surface.h"
 #include "D3DGraphics.h"
 
 
@@ -21,6 +22,8 @@ private:
 	void ClampToTrack();
 	void UpdatePosition(KeyboardClient &Kbd, float dt);
 private:
+	Surface *curSurface;
+	Surface carUp, carRight, carDown, carLeft;
 	Direction direction;
 	float x, y;
 	float speed;
