@@ -25,7 +25,7 @@
 
 Game::Game( HWND hWnd,const KeyboardServer& kServer )
 :	gfx ( hWnd ),
-	kbd( kServer )
+	kbd ( kServer )
 {
 	srand( (unsigned int)time( NULL ) );
 }
@@ -36,7 +36,7 @@ void Game::Go()
 	float dt = timer.GetTimeMilli() * 0.001f;
     timer.StartWatch();
 
-	observer.Update(kbd, dt);
+	observer.Update(kbd,dt);
 
 	gfx.BeginFrame();
 	ComposeFrame();

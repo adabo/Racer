@@ -6,11 +6,12 @@ class Observer
 {
 public:
 	Observer();
-    void Observer::UpdateKeyboardInput(KeyboardClient &kbd, float dt);
-	void Update(KeyboardClient &Kbd, const float dt);
+    void Observer::UpdateKeyboardInput(KeyboardServer &Kbd, float dt);
+	void Update(KeyboardServer &Kbd, const float dt);
 	void Draw(D3DGraphics &gfx);
 
 private:
 	Car car;
 	Track track;
+    KeyboardClient kbd;
 };

@@ -34,9 +34,9 @@ void Car::ClampToTrack()
     }
 }
 
-void Car::Update(KeyboardClient &Kbd, const float dt, Observer &obs)
+void Car::Update(const float dt)
 {
-	UpdatePosition(Kbd, dt);
+	UpdatePosition(dt);
 	ClampToTrack();
 	SetTrackSide();
 }
@@ -45,7 +45,6 @@ TrackSide Car::SetTrackSide()
 {
     int cellX = static_cast<int>(x);
     int cellY = static_cast<int>(x);
-
 
     /* ATTN: Josh*/
     /* From: Abel*/
@@ -96,7 +95,7 @@ TrackSide Car::SetTrackSide()
     }
 }
 
-void Car::UpdatePosition(KeyboardClient &Kbd, float dt)
+void Car::UpdatePosition(float dt)
 {
 	float accel = 0.0f;
 	float step = accel * dt;
@@ -132,41 +131,41 @@ void Car::AutoTurnCorner(TrackSide Ts)
 	switch (Ts)
 	{
 	case NORTHEAST:
-		if (carDir == RIGHT)
+		if (direction == RIGHT)
 		{
 			direction = DOWN;
 		}
-		else if (carDir == UP)
+		else if (direction == UP)
 		{
 			direction = LEFT;
 		}
 		break;
 	case SOUTHEAST:
-		if (carDir == DOWN)
+		if (direction == DOWN)
 		{
 			direction = LEFT;
 		}
-		else if (carDir == RIGHT)
+		else if (direction == RIGHT)
 		{
 			direction = UP;
 		}
 		break;
 	case SOUTHWEST:
-		if (carDir == LEFT)
+		if (direction == LEFT)
 		{
 			direction = UP;
 		}
-		else if (carDir == DOWN)
+		else if (direction == DOWN)
 		{
 			direction = RIGHT;
 		}
 		break;
 	case NORTHWEST:
-		if (carDir == UP)
+		if (direction == UP)
 		{
 			direction = RIGHT;
 		}
-		else if (carDir == LEFT)
+		else if (direction == LEFT)
 		{
 			direction = DOWN;
 		}
@@ -177,6 +176,11 @@ void Car::AutoTurnCorner(TrackSide Ts)
 Direction Car::GetDirection() const
 {
 	return direction;
+}
+
+void Car::SetDirection( Direction dir)
+{
+	direction = dir;
 }
 
 void Car::GetPosition(float &X, float &Y)
