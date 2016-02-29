@@ -36,9 +36,16 @@ void Car::ClampToTrack()
 
 void Car::Update(const float dt)
 {
-    UpdatePosition(dt,speed);
+    UpdatePosition(dt);
+    // Set position first then clamp
+    // Clamping before SetTrackSide causes
+    // a bug where if the car is one pixel past
+    // the x or y boundary, then SetTrackSide()
+    // never sets the corner which means the car
+    // /may/ turn the corner, sometimes not.
     ClampToTrack();
     SetTrackSide();
+    AutoTurnCorner();
 }
 
 void Car::SetSpeed(float accel)
@@ -54,7 +61,7 @@ float Car::GetSpeed()
 void Car::SetTrackSide()
 {
     int cellX = static_cast<int>(x);
-    int cellY = static_cast<int>(x);
+    int cellY = static_cast<int>(y);
 
     /* ATTN: Josh*/
     /* From: Abel*/
@@ -105,7 +112,17 @@ void Car::SetTrackSide()
     }
 }
 
-void Car::UpdatePosition(float dt, float accel)
+void Car::SetAccel(float ac)
+{
+    accel = ac;
+}
+
+float Car::GetAccel()
+{
+    return accel;
+}
+
+void Car::UpdatePosition(float dt)
 {
     float step = accel * dt;
     if (direction == UP &&
@@ -142,10 +159,10 @@ void Car::UpdatePosition(float dt, float accel)
     }
 }
 
-void Car::AutoTurnCorner(TrackSide Ts)
+void Car::AutoTurnCorner()
 {
     // Makes the car auto turn corners
-    switch (Ts)
+    switch (trackside)
     {
     case NORTHEAST:
         if (direction == RIGHT)

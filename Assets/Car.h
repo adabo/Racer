@@ -3,7 +3,6 @@
 #include "Surface.h"
 #include "D3DGraphics.h"
 
-
 class Car
 {
 public:
@@ -14,16 +13,18 @@ public:
 
     void ClampToTrack();
 	Direction GetDirection()const;
-	void AutoTurnCorner(TrackSide Ts);
+	void AutoTurnCorner();
 	void SetDirection( Direction dir);
     void SetTrackSide();
 	void GetPosition(float &X, float &Y);
     void SetSpeed(float accel);
     float GetSpeed();
+    void SetAccel(float ac);
+    float GetAccel();
 	// Having private here and private over variable list isn't necessary
 	// I just like doing it to keep them separate.
 private:
-	void UpdatePosition(float dt, float speed);
+	void UpdatePosition(float dt);
 private:
 	Surface *curSurface;
 	Surface carUp, carRight, carDown, carLeft;
@@ -31,4 +32,5 @@ private:
     TrackSide trackside;
 	float x, y;
 	float speed;
+    float accel;
 };

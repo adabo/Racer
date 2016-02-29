@@ -16,11 +16,10 @@ void Observer::Update(KeyboardClient &Kbd, const float dt)
 
 void Observer::UpdateKeyboardInput(KeyboardClient &Kbd, float dt)
 {
-    float accel = 0.0f;
-    car.SetSpeed(accel);
+	car.SetAccel(0.0f);
 	if (Kbd.SpaceIsPressed())
 	{
-		car.SetSpeed(accel);
+		car.SetAccel(car.GetSpeed());
 	}
 
 	if      (Kbd.UpIsPressed())
