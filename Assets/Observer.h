@@ -14,5 +14,4 @@ public:
 private:
 	Car car;
 	Track track;
-    KeyboardClient Kbd;
 };
