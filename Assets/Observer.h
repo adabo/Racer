@@ -1,6 +1,7 @@
 #pragma once
 #include "Car.h"
 #include "Track.h"
+#include "Keyboard.h"
 
 class Observer
 {
@@ -13,5 +14,5 @@ public:
 private:
 	Car car;
 	Track track;
-    KeyboardClient kbd;
+    KeyboardClient Kbd;
 };

@@ -34,6 +34,7 @@ private:
 	void ComposeFrame();
 private:
 	D3DGraphics gfx;
+    KeyboardServer kbd;
 
 	Timer timer;
 	Observer observer;

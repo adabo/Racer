@@ -31,7 +31,7 @@ Game::Game( HWND hWnd,const KeyboardServer& kServer )
 }
 
 void Game::Go()
-{    
+{
     timer.StopWatch();
 	float dt = timer.GetTimeMilli() * 0.001f;
     timer.StartWatch();

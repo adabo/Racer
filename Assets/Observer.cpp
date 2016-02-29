@@ -16,7 +16,7 @@ void Observer::Update(KeyboardServer &Kbd, const float dt)
 
 void Observer::UpdateKeyboardInput(KeyboardServer &Kbd, float dt)
 {
-	if (kbd.SpaceIsPressed())
+	if (Kbd.SpaceIsPressed())
 	{
 		accel = speed;
 	}
