@@ -41,9 +41,9 @@ void Car::Update(const float dt)
 	SetTrackSide();
 }
 
-void Car::SetSpeed(float accel)
+float Car::GetSpeed()
 {
-    speed = accel;
+    return speed;
 }
 
 void Car::SetTrackSide()
