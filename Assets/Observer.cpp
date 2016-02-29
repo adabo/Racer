@@ -4,7 +4,7 @@ Observer::Observer()
 {
 }
 
-void Observer::Update(KeyboardServer &Kbd, const float dt)
+void Observer::Update(KeyboardClient &Kbd, const float dt)
 {
 	// float carX, carY;
 	// car.GetPosition(carX, carY);
@@ -14,26 +14,26 @@ void Observer::Update(KeyboardServer &Kbd, const float dt)
 	car.Update(dt);
 }
 
-void Observer::UpdateKeyboardInput(KeyboardServer &Kbd, float dt)
+void Observer::UpdateKeyboardInput(KeyboardClient &Kbd, float dt)
 {
 	if (Kbd.SpaceIsPressed())
 	{
 		accel = speed;
 	}
 
-	if      (kbd.UpIsPressed())
+	if      (Kbd.UpIsPressed())
 	{
 		  car.SetDirection(UP);
 	}
-	else if (kbd.DownIsPressed())
+	else if (Kbd.DownIsPressed())
 	{
 		  car.SetDirection(DOWN);
 	}
-	else if (kbd.LeftIsPressed())
+	else if (Kbd.LeftIsPressed())
 	{
 		  car.SetDirection(LEFT);
 	}
-	else if (kbd.RightIsPressed())
+	else if (Kbd.RightIsPressed())
 	{
 		  car.SetDirection(RIGHT);
 	}
