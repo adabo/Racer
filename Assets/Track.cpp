@@ -1,59 +1,5 @@
 #include "Track.h"
 
-
-TrackSide Track::GetTrackSide(float X, float Y)
-{
-	int cellX = static_cast<int>(X);
-	int cellY = static_cast<int>(Y);
-
-	TrackSide trackside;
-	// Check if car is on west side
-	if (cellX == 20)
-	{
-		if (cellY == 20)
-		{
-			trackside = NORTHWEST;
-		}
-		else if (cellY == 540)
-		{
-			trackside = SOUTHWEST;
-		}
-		else
-		{
-			trackside = WEST;
-		}
-	}
-	// Check if car is on east side
-	else if (cellX == 540)
-	{
-		if (cellY == 20)
-		{
-			trackside = NORTHEAST;
-		}
-		else if (cellY == 540)
-		{
-			trackside = SOUTHEAST;
-		}
-		else
-		{
-			trackside = EAST;
-		}
-	}
-	// If it's not on East or West, the only places it could be is
-	else
-	{
-		if (cellY == 20)
-		{
-			trackside = NORTH;
-		}
-		else if (cellY == 540)
-		{
-			trackside = SOUTH;
-		}
-	}
-	return trackside;
-}
-
 void Track::Draw(D3DGraphics & gfx)
 {
 	int x = 0, y = 0;

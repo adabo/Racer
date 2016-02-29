@@ -14,66 +14,164 @@ Car::Car()
 	curSurface = &carDown;
 }
 
-void Car::Update(KeyboardClient &Kbd, const float dt)
+void Car::ClampToTrack()
+{
+    if (x < 20)
+    {
+        x = 20;
+    }
+    else if (x >= 540)
+    {
+        x = 540;
+    }
+    if (y < 20)
+    {
+        y = 20;
+    }
+    else if (y >= 540)
+    {
+        y = 540;
+    }
+}
+
+void Car::Update(KeyboardClient &Kbd, const float dt, Observer &obs)
 {
 	UpdatePosition(Kbd, dt);
 	ClampToTrack();
+	SetTrackSide();
+}
+
+TrackSide Car::SetTrackSide()
+{
+    int cellX = static_cast<int>(x);
+    int cellY = static_cast<int>(x);
+
+
+    /* ATTN: Josh*/
+    /* From: Abel*/
+    /* What does cell mean? */
+    // Check if car is on west side
+    if (cellX == 20)
+    {
+        if (cellY == 20)
+        {
+            trackside = NORTHWEST;
+        }
+        else if (cellY == 540)
+        {
+            trackside = SOUTHWEST;
+        }
+        else
+        {
+            trackside = WEST;
+        }
+    }
+    // Check if car is on east side
+    else if (cellX == 540)
+    {
+        if (cellY == 20)
+        {
+            trackside = NORTHEAST;
+        }
+        else if (cellY == 540)
+        {
+            trackside = SOUTHEAST;
+        }
+        else
+        {
+            trackside = EAST;
+        }
+    }
+    // If it's not on East or West, the only places it could be is
+    else
+    {
+        if (cellY == 20)
+        {
+            trackside = NORTH;
+        }
+        else if (cellY == 540)
+        {
+            trackside = SOUTH;
+        }
+    }
 }
 
 void Car::UpdatePosition(KeyboardClient &Kbd, float dt)
 {
 	float accel = 0.0f;
-	if (Kbd.SpaceIsPressed())
-	{
-		accel = speed;
-	}
-
 	float step = accel * dt;
-	if (direction == UP)
+	if (direction == UP &&
+	   (trackside == WEST || trackside == EAST))
 	{
 		curSurface = &carUp;
 		y -= step;
 	}
-	else if (direction == DOWN)
+	else if (direction == DOWN &&
+		    (trackside == WEST || trackside == EAST))
 	{
 		curSurface = &carDown;
 		y += step;
 	}
-	else if (direction == LEFT)
+	else if (direction == LEFT &&
+		    (trackside == NORTH || trackside == SOUTH))
 	{
 		curSurface = &carLeft;
 		x -= step;
 	}
-	else if (direction == RIGHT)
+	else if (direction == RIGHT &&
+		    (trackside == NORTH || trackside == SOUTH))
 	{
 		curSurface = &carRight;
 		x += step;
 	}
 }
 
-void Car::ClampToTrack()
+void Car::AutoTurnCorner(TrackSide Ts)
 {
-	if (x < 20)
+	// Makes the car auto turn corners
+	switch (Ts)
 	{
-		x = 20;
+	case NORTHEAST:
+		if (carDir == RIGHT)
+		{
+			direction = DOWN;
+		}
+		else if (carDir == UP)
+		{
+			direction = LEFT;
+		}
+		break;
+	case SOUTHEAST:
+		if (carDir == DOWN)
+		{
+			direction = LEFT;
+		}
+		else if (carDir == RIGHT)
+		{
+			direction = UP;
+		}
+		break;
+	case SOUTHWEST:
+		if (carDir == LEFT)
+		{
+			direction = UP;
+		}
+		else if (carDir == DOWN)
+		{
+			direction = RIGHT;
+		}
+		break;
+	case NORTHWEST:
+		if (carDir == UP)
+		{
+			direction = RIGHT;
+		}
+		else if (carDir == LEFT)
+		{
+			direction = DOWN;
+		}
+		break;
 	}
-	else if (x >= 540)
-	{
-		x = 540;
-	}
-	if (y < 20)
-	{
-		y = 20;
-	}
-	else if (y >= 540)
-	{
-		y = 540;
-	}
-}
-
-void Car::SetDirection(Direction d)
-{
-	direction = d;
 }
 
 Direction Car::GetDirection() const
@@ -81,7 +179,7 @@ Direction Car::GetDirection() const
 	return direction;
 }
 
-void Car::GetPosition(float & X, float & Y)
+void Car::GetPosition(float &X, float &Y)
 {
 	X = x;
 	Y = y;

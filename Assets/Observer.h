@@ -6,10 +6,9 @@ class Observer
 {
 public:
 	Observer();
+    void Observer::UpdateKeyboardInput(KeyboardClient &kbd, float dt);
 	void Update(KeyboardClient &Kbd, const float dt);
 	void Draw(D3DGraphics &gfx);
-private:
-	void SetCarDirection(TrackSide Ts);
 
 private:
 	Car car;
