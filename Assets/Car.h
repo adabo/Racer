@@ -18,11 +18,12 @@ public:
 	void SetDirection( Direction dir);
     void SetTrackSide();
 	void GetPosition(float &X, float &Y);
+    void SetSpeed(float accel);
     float GetSpeed();
 	// Having private here and private over variable list isn't necessary
 	// I just like doing it to keep them separate.
 private:
-	void UpdatePosition(float dt);
+	void UpdatePosition(float dt, float speed);
 private:
 	Surface *curSurface;
 	Surface carUp, carRight, carDown, carLeft;

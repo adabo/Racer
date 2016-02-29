@@ -1,17 +1,17 @@
 #include "Car.h"
 
 Car::Car()
-	:
-	x(20),
-	y(20),
-	direction(DOWN),
-	speed(200.0f),
-	carUp(L"Images\\Car\\car_up.bmp"),
-	carRight(L"Images\\Car\\car_right.bmp"),
-	carDown(L"Images\\Car\\car_down.bmp"),
-	carLeft(L"Images\\Car\\car_left.bmp")
+    :
+    x(20),
+    y(20),
+    direction(DOWN),
+    speed(200.0f),
+    carUp(L"Images\\Car\\car_up.bmp"),
+    carRight(L"Images\\Car\\car_right.bmp"),
+    carDown(L"Images\\Car\\car_down.bmp"),
+    carLeft(L"Images\\Car\\car_left.bmp")
 {
-	curSurface = &carDown;
+    curSurface = &carDown;
 }
 
 void Car::ClampToTrack()
@@ -36,9 +36,14 @@ void Car::ClampToTrack()
 
 void Car::Update(const float dt)
 {
-	UpdatePosition(dt);
-	ClampToTrack();
-	SetTrackSide();
+    UpdatePosition(dt,speed);
+    ClampToTrack();
+    SetTrackSide();
+}
+
+void Car::SetSpeed(float accel)
+{
+    speed = accel;
 }
 
 float Car::GetSpeed()
@@ -100,101 +105,108 @@ void Car::SetTrackSide()
     }
 }
 
-void Car::UpdatePosition(float dt)
+void Car::UpdatePosition(float dt, float accel)
 {
-	float accel = 0.0f;
-	float step = accel * dt;
-	if (direction == UP &&
-	   (trackside == WEST || trackside == EAST))
-	{
-		curSurface = &carUp;
-		y -= step;
-	}
-	else if (direction == DOWN &&
-		    (trackside == WEST || trackside == EAST))
-	{
-		curSurface = &carDown;
-		y += step;
-	}
-	else if (direction == LEFT &&
-		    (trackside == NORTH || trackside == SOUTH))
-	{
-		curSurface = &carLeft;
-		x -= step;
-	}
-	else if (direction == RIGHT &&
-		    (trackside == NORTH || trackside == SOUTH))
-	{
-		curSurface = &carRight;
-		x += step;
-	}
+    float step = accel * dt;
+    if (direction == UP &&
+       (trackside == WEST || trackside == EAST ||
+        trackside == NORTHWEST || trackside == SOUTHWEST ||
+        trackside == NORTHEAST || trackside == SOUTHEAST))
+    {
+        curSurface = &carUp;
+        y -= step;
+    }
+    else if (direction == DOWN &&
+            (trackside == WEST || trackside == EAST ||
+             trackside == NORTHWEST || trackside == SOUTHWEST ||
+             trackside == NORTHEAST || trackside == SOUTHEAST))
+    {
+        curSurface = &carDown;
+        y += step;
+    }
+    else if (direction == LEFT &&
+            (trackside == NORTH || trackside == SOUTH ||
+             trackside == NORTHWEST || trackside == SOUTHWEST ||
+             trackside == NORTHEAST || trackside == SOUTHEAST))
+    {
+        curSurface = &carLeft;
+        x -= step;
+    }
+    else if (direction == RIGHT &&
+            (trackside == NORTH || trackside == SOUTH ||
+             trackside == NORTHWEST || trackside == SOUTHWEST ||
+             trackside == NORTHEAST || trackside == SOUTHEAST))
+    {
+        curSurface = &carRight;
+        x += step;
+    }
 }
 
 void Car::AutoTurnCorner(TrackSide Ts)
 {
-	// Makes the car auto turn corners
-	switch (Ts)
-	{
-	case NORTHEAST:
-		if (direction == RIGHT)
-		{
-			direction = DOWN;
-		}
-		else if (direction == UP)
-		{
-			direction = LEFT;
-		}
-		break;
-	case SOUTHEAST:
-		if (direction == DOWN)
-		{
-			direction = LEFT;
-		}
-		else if (direction == RIGHT)
-		{
-			direction = UP;
-		}
-		break;
-	case SOUTHWEST:
-		if (direction == LEFT)
-		{
-			direction = UP;
-		}
-		else if (direction == DOWN)
-		{
-			direction = RIGHT;
-		}
-		break;
-	case NORTHWEST:
-		if (direction == UP)
-		{
-			direction = RIGHT;
-		}
-		else if (direction == LEFT)
-		{
-			direction = DOWN;
-		}
-		break;
-	}
+    // Makes the car auto turn corners
+    switch (Ts)
+    {
+    case NORTHEAST:
+        if (direction == RIGHT)
+        {
+            direction = DOWN;
+        }
+        else if (direction == UP)
+        {
+            direction = LEFT;
+        }
+        break;
+    case SOUTHEAST:
+        if (direction == DOWN)
+        {
+            direction = LEFT;
+        }
+        else if (direction == RIGHT)
+        {
+            direction = UP;
+        }
+        break;
+    case SOUTHWEST:
+        if (direction == LEFT)
+        {
+            direction = UP;
+        }
+        else if (direction == DOWN)
+        {
+            direction = RIGHT;
+        }
+        break;
+    case NORTHWEST:
+        if (direction == UP)
+        {
+            direction = RIGHT;
+        }
+        else if (direction == LEFT)
+        {
+            direction = DOWN;
+        }
+        break;
+    }
 }
 
 Direction Car::GetDirection() const
 {
-	return direction;
+    return direction;
 }
 
 void Car::SetDirection( Direction dir)
 {
-	direction = dir;
+    direction = dir;
 }
 
 void Car::GetPosition(float &X, float &Y)
 {
-	X = x;
-	Y = y;
+    X = x;
+    Y = y;
 }
 
 void Car::Draw(D3DGraphics &gfx)
 {
-	curSurface->Draw(static_cast<int>(x), static_cast<int>(y), gfx);
+    curSurface->Draw(static_cast<int>(x), static_cast<int>(y), gfx);
 }
