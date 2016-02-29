@@ -7,8 +7,8 @@ class Observer
 {
 public:
 	Observer();
-    void Observer::UpdateKeyboardInput(KeyboardClient &Kbd, float dt);
-	void Update(KeyboardServer &Kbd, const float dt);
+    void UpdateKeyboardInput(KeyboardClient &Kbd, float dt);
+	void Update(KeyboardClient &Kbd, const float dt);
 	void Draw(D3DGraphics &gfx);
 
 private:

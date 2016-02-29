@@ -16,7 +16,9 @@ public:
 	Direction GetDirection()const;
 	void AutoTurnCorner(TrackSide Ts);
 	void SetDirection( Direction dir);
+    void SetTrackSide();
 	void GetPosition(float &X, float &Y);
+    void SetSpeed(float accel);
 	// Having private here and private over variable list isn't necessary
 	// I just like doing it to keep them separate.
 private:

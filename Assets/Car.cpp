@@ -41,7 +41,12 @@ void Car::Update(const float dt)
 	SetTrackSide();
 }
 
-TrackSide Car::SetTrackSide()
+void Car::SetSpeed(float accel)
+{
+    speed = accel;
+}
+
+void Car::SetTrackSide()
 {
     int cellX = static_cast<int>(x);
     int cellY = static_cast<int>(x);
